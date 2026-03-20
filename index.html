@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Test Mental A4P — Académie de Performances</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght=300;400;600;700&family=DM+Sans:wght=300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #1B3A6B;
@@ -29,7 +29,6 @@ color: var(–white);
 overflow-x: hidden;
 }
 
-/* Background pattern */
 body::before {
 content: ‘’;
 position: fixed;
@@ -51,7 +50,6 @@ flex-direction: column;
 justify-content: center;
 }
 
-/* HEADER */
 .header {
 text-align: center;
 padding: 30px 0 20px;
@@ -74,15 +72,9 @@ color: var(–white);
 line-height: 1.2;
 }
 
-.brand span {
-color: var(–gold);
-}
+.brand span { color: var(–gold); }
 
-/* SCREEN BASE */
-.screen {
-display: none;
-animation: fadeIn 0.5s ease;
-}
+.screen { display: none; animation: fadeIn 0.5s ease; }
 .screen.active { display: block; }
 
 @keyframes fadeIn {
@@ -90,7 +82,6 @@ from { opacity: 0; transform: translateY(16px); }
 to { opacity: 1; transform: translateY(0); }
 }
 
-/* INTRO SCREEN */
 .intro-card {
 background: rgba(255,255,255,0.06);
 border: 1px solid rgba(255,255,255,0.12);
@@ -109,10 +100,7 @@ line-height: 1.2;
 margin-bottom: 16px;
 }
 
-.intro-title em {
-color: var(–gold);
-font-style: normal;
-}
+.intro-title em { color: var(–gold); font-style: normal; }
 
 .intro-desc {
 color: rgba(255,255,255,0.7);
@@ -168,7 +156,6 @@ color: rgba(255,255,255,0.5);
 letter-spacing: 0.05em;
 }
 
-/* BUTTONS */
 .btn-primary {
 width: 100%;
 padding: 16px 24px;
@@ -208,10 +195,7 @@ background: rgba(255,255,255,0.05);
 color: white;
 }
 
-/* PROGRESS */
-.progress-wrap {
-margin-bottom: 24px;
-}
+.progress-wrap { margin-bottom: 24px; }
 
 .progress-top {
 display: flex;
@@ -246,7 +230,6 @@ border-radius: 4px;
 transition: width 0.5s ease;
 }
 
-/* CATEGORY BADGE */
 .category-badge {
 display: inline-flex;
 align-items: center;
@@ -263,7 +246,6 @@ text-transform: uppercase;
 margin-bottom: 16px;
 }
 
-/* QUESTION CARD */
 .question-card {
 background: rgba(255,255,255,0.06);
 border: 1px solid rgba(255,255,255,0.12);
@@ -282,7 +264,6 @@ line-height: 1.4;
 margin-bottom: 24px;
 }
 
-/* OPTIONS */
 .options {
 display: flex;
 flex-direction: column;
@@ -349,7 +330,6 @@ color: white;
 font-weight: 500;
 }
 
-/* EMAIL SCREEN */
 .email-card {
 background: rgba(255,255,255,0.06);
 border: 1px solid rgba(255,255,255,0.12);
@@ -359,10 +339,7 @@ margin: 20px 0;
 text-align: center;
 }
 
-.email-icon {
-font-size: 48px;
-margin-bottom: 16px;
-}
+.email-icon { font-size: 48px; margin-bottom: 16px; }
 
 .email-title {
 font-family: ‘Cormorant Garamond’, serif;
@@ -380,7 +357,7 @@ line-height: 1.7;
 margin-bottom: 28px;
 }
 
-.email-input {
+.email-input, .name-input {
 width: 100%;
 padding: 14px 18px;
 background: rgba(255,255,255,0.08);
@@ -394,28 +371,12 @@ transition: all 0.3s ease;
 outline: none;
 }
 
-.email-input::placeholder { color: rgba(255,255,255,0.35); }
+.name-input { margin-bottom: 16px; }
 
-.email-input:focus {
-border-color: var(–accent);
-background: rgba(74,144,217,0.1);
-}
-
-.name-input {
-width: 100%;
-padding: 14px 18px;
-background: rgba(255,255,255,0.08);
-border: 1px solid rgba(255,255,255,0.2);
-border-radius: 12px;
-color: white;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 15px;
-margin-bottom: 16px;
-transition: all 0.3s ease;
-outline: none;
-}
-
+.email-input::placeholder,
 .name-input::placeholder { color: rgba(255,255,255,0.35); }
+
+.email-input:focus,
 .name-input:focus {
 border-color: var(–accent);
 background: rgba(74,144,217,0.1);
@@ -428,7 +389,6 @@ margin-top: 10px;
 line-height: 1.5;
 }
 
-/* RESULTS SCREEN */
 .results-header {
 text-align: center;
 padding: 30px 0 20px;
@@ -478,7 +438,6 @@ margin: 16px 0;
 letter-spacing: 0.05em;
 }
 
-/* DIMENSION BARS */
 .dimensions-card {
 background: rgba(255,255,255,0.06);
 border: 1px solid rgba(255,255,255,0.12);
@@ -496,9 +455,7 @@ text-transform: uppercase;
 margin-bottom: 20px;
 }
 
-.dimension-row {
-margin-bottom: 16px;
-}
+.dimension-row { margin-bottom: 16px; }
 
 .dimension-top {
 display: flex;
@@ -531,7 +488,6 @@ border-radius: 6px;
 transition: width 1s ease 0.3s;
 }
 
-/* INSIGHTS */
 .insight-card {
 background: rgba(255,255,255,0.06);
 border: 1px solid rgba(255,255,255,0.12);
@@ -540,9 +496,7 @@ padding: 28px;
 margin-bottom: 16px;
 }
 
-.insight-section {
-margin-bottom: 20px;
-}
+.insight-section { margin-bottom: 20px; }
 
 .insight-label {
 font-size: 11px;
@@ -562,7 +516,6 @@ color: rgba(255,255,255,0.75);
 line-height: 1.6;
 }
 
-/* CTA CARD */
 .cta-card {
 background: linear-gradient(135deg, rgba(27,58,107,0.8), rgba(46,91,168,0.6));
 border: 1px solid rgba(74,144,217,0.4);
@@ -623,7 +576,6 @@ color: rgba(255,255,255,0.3);
 letter-spacing: 0.1em;
 }
 
-/* Error */
 .error-msg {
 color: #F87171;
 font-size: 12px;
@@ -638,7 +590,6 @@ display: none;
 .intro-stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
 }
 
-/* TEASING SCREEN */
 .teasing-card {
 background: linear-gradient(135deg, rgba(15,34,68,0.95), rgba(27,58,107,0.9));
 border: 1px solid rgba(201,168,76,0.5);
@@ -648,6 +599,7 @@ margin-bottom: 16px;
 position: relative;
 overflow: hidden;
 }
+
 .teasing-card::before {
 content: ‘’;
 position: absolute;
@@ -658,6 +610,7 @@ height: 300px;
 background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
 pointer-events: none;
 }
+
 .teasing-eyebrow {
 font-size: 11px;
 font-weight: 700;
@@ -666,6 +619,7 @@ text-transform: uppercase;
 color: var(–gold);
 margin-bottom: 12px;
 }
+
 .teasing-title {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 26px;
@@ -674,19 +628,23 @@ color: var(–white);
 line-height: 1.3;
 margin-bottom: 14px;
 }
+
 .teasing-title em { color: var(–gold); font-style: normal; }
+
 .teasing-desc {
 font-size: 14px;
 color: rgba(255,255,255,0.7);
 line-height: 1.7;
 margin-bottom: 24px;
 }
+
 .teasing-features {
 display: flex;
 flex-direction: column;
 gap: 10px;
 margin-bottom: 28px;
 }
+
 .teasing-feature {
 display: flex;
 align-items: flex-start;
@@ -696,28 +654,28 @@ background: rgba(255,255,255,0.05);
 border-radius: 12px;
 border: 1px solid rgba(255,255,255,0.08);
 }
-.feature-icon {
-font-size: 20px;
-flex-shrink: 0;
-margin-top: 1px;
-}
-.feature-content {}
+
+.feature-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
 .feature-title {
 font-size: 13px;
 font-weight: 600;
 color: white;
 margin-bottom: 2px;
 }
+
 .feature-desc {
 font-size: 12px;
 color: rgba(255,255,255,0.5);
 line-height: 1.4;
 }
+
 .teasing-vs {
 text-align: center;
 margin: 16px 0;
 position: relative;
 }
+
 .teasing-vs::before {
 content: ‘’;
 position: absolute;
@@ -727,6 +685,7 @@ right: 0;
 height: 1px;
 background: rgba(255,255,255,0.1);
 }
+
 .teasing-vs span {
 position: relative;
 background: var(–navy-dark);
@@ -735,6 +694,7 @@ font-size: 11px;
 color: rgba(255,255,255,0.35);
 letter-spacing: 0.1em;
 }
+
 .teasing-score-box {
 background: rgba(201,168,76,0.1);
 border: 1px solid rgba(201,168,76,0.3);
@@ -743,6 +703,7 @@ padding: 14px 16px;
 margin-bottom: 20px;
 text-align: center;
 }
+
 .teasing-score-label {
 font-size: 11px;
 color: rgba(255,255,255,0.5);
@@ -750,6 +711,7 @@ letter-spacing: 0.1em;
 text-transform: uppercase;
 margin-bottom: 4px;
 }
+
 .teasing-score-value {
 font-family: ‘Cormorant Garamond’, serif;
 font-size: 42px;
@@ -757,25 +719,29 @@ font-weight: 700;
 color: var(–gold);
 line-height: 1;
 }
+
 .teasing-score-context {
 font-size: 12px;
 color: rgba(255,255,255,0.5);
 margin-top: 4px;
 }
-
 </style>
+
 </head>
 <body>
 
 <div class="container">
 
   <div class="header">
-    <img src="https://alexandregriffet-cmd.github.io/Test-performance-mental-A4P/IMG_1572.jpeg" alt="Académie de Performances A4P" style="width:120px;height:120px;border-radius:16px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(0,0,0,0.4);" />
+    <img src="https://alexandregriffet-cmd.github.io/Test-performance-mental-A4P/IMG_1572.jpeg"
+         alt="Académie de Performances A4P"
+         style="width:120px;height:120px;border-radius:16px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(0,0,0,0.4);"
+         onerror="this.style.display='none'" />
     <div class="logo-text" style="margin-top:4px;">Académie de Performances</div>
     <div class="brand">A4P · <span>Alexandre Griffet</span></div>
   </div>
 
-  <!-- ══ ÉCRAN 1 — INTRO ══ -->
+  <!-- ÉCRAN 1 — INTRO -->
 
   <div class="screen active" id="screen-intro">
     <div class="intro-card">
@@ -808,7 +774,7 @@ margin-top: 4px;
     <div class="footer-brand">ACADÉMIE DE PERFORMANCES · A4P · alexandregriffet</div>
   </div>
 
-  <!-- ══ ÉCRAN 2 — QUESTIONS ══ -->
+  <!-- ÉCRAN 2 — QUESTIONS -->
 
   <div class="screen" id="screen-quiz">
     <div class="progress-wrap">
@@ -835,7 +801,7 @@ margin-top: 4px;
 
   </div>
 
-  <!-- ══ ÉCRAN 3 — EMAIL ══ -->
+  <!-- ÉCRAN 3 — EMAIL -->
 
   <div class="screen" id="screen-email">
     <div class="email-card">
@@ -854,19 +820,18 @@ margin-top: 4px;
     </div>
   </div>
 
-  <!-- ══ ÉCRAN 4 — RÉSULTATS ══ -->
+  <!-- ÉCRAN 4 — RÉSULTATS -->
 
   <div class="screen" id="screen-results">
+    <div class="results-header">
+      <div class="results-title">Ton profil mental A4P</div>
+      <div class="results-name" id="result-name">Performer</div>
+      <div class="results-score" id="result-score">0%</div>
+      <div class="results-score-label">SCORE GLOBAL DE PERFORMANCE MENTALE</div>
+      <div class="profile-badge" id="profile-badge">Profil</div>
+    </div>
 
 ```
-<div class="results-header">
-  <div class="results-title">Ton profil mental A4P</div>
-  <div class="results-name" id="result-name">Performer</div>
-  <div class="results-score" id="result-score">0%</div>
-  <div class="results-score-label">SCORE GLOBAL DE PERFORMANCE MENTALE</div>
-  <div class="profile-badge" id="profile-badge">Profil</div>
-</div>
-
 <div class="dimensions-card">
   <div class="dimensions-title">Tes 4 dimensions</div>
   <div id="dimensions-bars"></div>
@@ -913,7 +878,7 @@ margin-top: 4px;
 
   </div>
 
-  <!-- ══ ÉCRAN 5 — TEASING DIAGNOSTIC COMPLET ══ -->
+  <!-- ÉCRAN 5 — TEASING DIAGNOSTIC COMPLET -->
 
   <div class="screen" id="screen-teasing">
     <div class="results-header">
@@ -994,120 +959,73 @@ margin-top: 4px;
 
 <script>
 const QUESTIONS = [
-  // LUCIDITÉ (3 questions)
-  {
-    cat: "Lucidité", catColor: "#4A90D9",
+  { cat: "Lucidité", catColor: "#4A90D9",
     text: "Avant une compétition ou un moment important, je connais clairement mes points forts et mes points faibles.",
     options: ["Jamais — je n'y pense pas vraiment","Rarement — j'y pense mais c'est flou","Parfois — selon les situations","Souvent — j'ai une bonne idée de moi-même","Toujours — je me connais précisément"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Lucidité", catColor: "#4A90D9",
+    scores: [0,1,2,3,4] },
+  { cat: "Lucidité", catColor: "#4A90D9",
     text: "Quand je fais une erreur, je comprends rapidement ce qui s'est passé sans me juger trop sévèrement.",
     options: ["Jamais — je reste bloqué sur l'erreur","Rarement — je me juge beaucoup","Parfois — ça dépend de l'enjeu","Souvent — j'analyse sans trop me blesser","Toujours — je transforme l'erreur en info"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Lucidité", catColor: "#4A90D9",
+    scores: [0,1,2,3,4] },
+  { cat: "Lucidité", catColor: "#4A90D9",
     text: "Je suis capable d'identifier ce qui déclenche mon stress ou mes émotions négatives en compétition.",
     options: ["Jamais — ça arrive sans prévenir","Rarement — c'est difficile à identifier","Parfois — quelques déclencheurs connus","Souvent — j'en connais la plupart","Toujours — je les identifie avec précision"],
-    scores: [0,1,2,3,4]
-  },
-  // RÉGULATION (3 questions)
-  {
-    cat: "Régulation", catColor: "#C9A84C",
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
     text: "Lorsque la pression monte, j'arrive à retrouver mon calme et ma lucidité en quelques secondes.",
     options: ["Jamais — je perds complètement mes moyens","Rarement — il me faut beaucoup de temps","Parfois — selon l'intensité de la situation","Souvent — j'ai des techniques qui fonctionnent","Toujours — je me régule rapidement"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Régulation", catColor: "#C9A84C",
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
     text: "Après une mauvaise action ou une erreur, je reviens dans le présent sans que ça affecte la suite.",
     options: ["Jamais — une erreur déclenche une spirale","Rarement — je rummine longtemps","Parfois — selon l'importance de l'enjeu","Souvent — je rebondis assez vite","Toujours — je coupe et je recommence"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Régulation", catColor: "#C9A84C",
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
     text: "J'utilise des routines mentales (respiration, mot, geste) pour me préparer avant un moment clé.",
     options: ["Jamais — je n'ai pas de routine","Rarement — j'essaie parfois sans régularité","Parfois — selon les circonstances","Souvent — j'ai quelques rituels efficaces","Toujours — j'ai un rituel précis et répété"],
-    scores: [0,1,2,3,4]
-  },
-  // PERFORMANCE (3 questions)
-  {
-    cat: "Performance", catColor: "#4ADE80",
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
     text: "Mon niveau de performance en compétition est proche de ce que je produis à l'entraînement.",
     options: ["Jamais — je suis beaucoup moins bon en match","Rarement — il y a souvent un écart important","Parfois — ça dépend des jours","Souvent — mes niveaux sont assez proches","Toujours — je performe de façon constante"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Performance", catColor: "#4ADE80",
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
     text: "Dans les moments décisifs (fin de match, deadline, examen), je suis capable de maintenir ma concentration.",
     options: ["Jamais — je relâche systématiquement","Rarement — la pression me fait décrocher","Parfois — ça dépend de mon état","Souvent — je reste focalisé la plupart du temps","Toujours — les enjeux me boostent"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Performance", catColor: "#4ADE80",
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
     text: "Je suis capable de transformer la pression d'un moment important en énergie positive.",
     options: ["Jamais — la pression me paralyse","Rarement — elle me perturbe plus qu'elle ne m'aide","Parfois — selon l'enjeu","Souvent — j'arrive à la canaliser","Toujours — la pression m'élève"],
-    scores: [0,1,2,3,4]
-  },
-  // AUTONOMIE (3 questions)
-  {
-    cat: "Autonomie", catColor: "#C084FC",
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
     text: "Je suis capable de m'auto-évaluer honnêtement après une performance sans attendre le retour de mon coach.",
     options: ["Jamais — j'ai besoin d'un retour extérieur","Rarement — j'ai du mal à être objectif","Parfois — sur certains aspects","Souvent — j'ai un regard assez lucide","Toujours — je débriefe seul avec précision"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Autonomie", catColor: "#C084FC",
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
     text: "J'adapte mes outils mentaux selon les situations sans avoir besoin qu'on me le dise.",
     options: ["Jamais — je ne sais pas quoi utiliser","Rarement — j'applique ce qu'on m'a dit sans adapter","Parfois — selon les situations familières","Souvent — j'ajuste selon le contexte","Toujours — je suis autonome dans mes choix"],
-    scores: [0,1,2,3,4]
-  },
-  {
-    cat: "Autonomie", catColor: "#C084FC",
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
     text: "Mon engagement et ma motivation viennent principalement de l'intérieur, pas des encouragements extérieurs.",
     options: ["Jamais — j'ai besoin d'être poussé","Rarement — la validation externe est importante pour moi","Parfois — selon les périodes","Souvent — je suis moteur la plupart du temps","Toujours — je suis intrinsèquement motivé"],
-    scores: [0,1,2,3,4]
-  }
-];
-
-const DIMENSIONS = [
-  { key: 'lucidite', label: 'Lucidité', color: '#4A90D9', desc: 'Connaissance de soi' },
-  { key: 'regulation', label: 'Régulation', color: '#C9A84C', desc: 'Gestion émotionnelle' },
-  { key: 'performance', label: 'Performance', color: '#4ADE80', desc: 'Action sous pression' },
-  { key: 'autonomie', label: 'Autonomie', color: '#C084FC', desc: 'Indépendance mentale' },
+    scores: [0,1,2,3,4] }
 ];
 
 const PROFILES = [
-  {
-    min: 0, max: 30,
-    name: "Le Débutant Mental",
+  { min: 0, max: 30, name: "Le Débutant Mental",
     strength: "Tu as une grande marge de progression — c'est une opportunité. Beaucoup de ressources sont encore inexploitées.",
     weakness: "La pression te déstabilise facilement et tu as du mal à rebondir après une erreur. La connaissance de toi-même est encore limitée.",
-    tool: "Commence par la phase Lucidité de la méthode A4P : identifier tes 3 principaux déclencheurs de stress et construire ton tableau Objectif-But-Finalité."
-  },
-  {
-    min: 31, max: 55,
-    name: "Le Performer en Construction",
+    tool: "Commence par la phase Lucidité de la méthode A4P : identifier tes 3 principaux déclencheurs de stress et construire ton tableau Objectif-But-Finalité." },
+  { min: 31, max: 55, name: "Le Performer en Construction",
     strength: "Tu as des bases solides et une conscience de toi-même qui commence à s'affirmer. Tu sais ce qui fonctionne.",
     weakness: "La régularité est ton enjeu principal — tu performes par intermittence selon ton état intérieur du moment.",
-    tool: "Travaille la phase Régulation : installe un rituel minute (1 mot + 1 geste + 1 respiration) et pratique-le avant chaque compétition pendant 21 jours."
-  },
-  {
-    min: 56, max: 75,
-    name: "Le Performer Confirmé",
+    tool: "Travaille la phase Régulation : installe un rituel minute (1 mot + 1 geste + 1 respiration) et pratique-le avant chaque compétition pendant 21 jours." },
+  { min: 56, max: 75, name: "Le Performer Confirmé",
     strength: "Tu as une réelle solidité mentale. Tu te connais bien et tu as des outils qui fonctionnent sous pression.",
     weakness: "L'autonomie est ton prochain niveau — tu dépends encore parfois du contexte ou du soutien extérieur pour performer à ton meilleur niveau.",
-    tool: "Entre dans la phase Autonomie : construis ton protocole de débrief personnel (3 positifs + 1 amélioration) et applique-le systématiquement après chaque performance."
-  },
-  {
-    min: 76, max: 100,
-    name: "L'Architecte Mental",
+    tool: "Entre dans la phase Autonomie : construis ton protocole de débrief personnel (3 positifs + 1 amélioration) et applique-le systématiquement après chaque performance." },
+  { min: 76, max: 100, name: "L'Architecte Mental",
     strength: "Tu as développé une maturité mentale remarquable. Tu te régules, tu t'auto-évalues et tu performes avec constance.",
     weakness: "Ton enjeu est la transmission et le leadership mental — aider les autres à atteindre ton niveau de solidité.",
-    tool: "Explore la méthode A4P complète (PMP + IPP + FMP) pour affiner encore ta connaissance de toi et maximiser l'expression de ton plein potentiel."
-  }
+    tool: "Explore la méthode A4P complète (PMP + IPP + FMP) pour affiner encore ta connaissance de toi et maximiser l'expression de ton plein potentiel." }
 ];
 
 let currentQ = 0;
@@ -1115,10 +1033,7 @@ let answers = [];
 let scores = { lucidite: 0, regulation: 0, performance: 0, autonomie: 0 };
 let selectedOption = null;
 
-function startQuiz() {
-  showScreen('screen-quiz');
-  renderQuestion();
-}
+function startQuiz() { showScreen('screen-quiz'); renderQuestion(); }
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1129,7 +1044,6 @@ function showScreen(id) {
 function renderQuestion() {
   const q = QUESTIONS[currentQ];
   const total = QUESTIONS.length;
-
   document.getElementById('progress-count').textContent = `${currentQ + 1} / ${total}`;
   document.getElementById('progress-fill').style.width = `${((currentQ + 1) / total) * 100}%`;
 
@@ -1160,8 +1074,6 @@ function selectOption(idx, el) {
   el.classList.add('selected');
   selectedOption = idx;
   document.getElementById('btn-next').style.display = 'block';
-
-  // Auto-advance on last question
   if (currentQ === QUESTIONS.length - 1) {
     document.getElementById('btn-next').textContent = 'Voir mes résultats →';
   }
@@ -1169,16 +1081,12 @@ function selectOption(idx, el) {
 
 function nextQuestion() {
   if (selectedOption === null) return;
-
   const q = QUESTIONS[currentQ];
   const score = q.scores[selectedOption];
   answers.push(score);
-
   const catMap = { 'Lucidité': 'lucidite', 'Régulation': 'regulation', 'Performance': 'performance', 'Autonomie': 'autonomie' };
   scores[catMap[q.cat]] += score;
-
   currentQ++;
-
   if (currentQ >= QUESTIONS.length) {
     showScreen('screen-email');
   } else {
@@ -1192,14 +1100,12 @@ function showResults() {
   const name = document.getElementById('user-name').value.trim();
   const email = document.getElementById('user-email').value.trim();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
   if (!emailRegex.test(email)) {
     document.getElementById('error-msg').style.display = 'block';
     return;
   }
   document.getElementById('error-msg').style.display = 'none';
 
-  // Calculate scores (max 4 per question, 3 questions per dim = 12 max per dim)
   const maxPerDim = 12;
   const dimScores = {
     lucidite: Math.round((scores.lucidite / maxPerDim) * 100),
@@ -1207,15 +1113,11 @@ function showResults() {
     performance: Math.round((scores.performance / maxPerDim) * 100),
     autonomie: Math.round((scores.autonomie / maxPerDim) * 100),
   };
-
   const globalScore = Math.round((dimScores.lucidite + dimScores.regulation + dimScores.performance + dimScores.autonomie) / 4);
-
-  // Profile
   const profile = PROFILES.find(p => globalScore >= p.min && globalScore <= p.max) || PROFILES[0];
 
   showScreen('screen-results');
 
-  // Animate score
   const displayName = name ? name : 'Performer';
   document.getElementById('result-name').textContent = displayName;
   document.getElementById('profile-badge').textContent = profile.name;
@@ -1223,17 +1125,12 @@ function showResults() {
   let count = 0;
   const interval = setInterval(() => {
     count += 2;
-    if (count >= globalScore) {
-      count = globalScore;
-      clearInterval(interval);
-    }
+    if (count >= globalScore) { count = globalScore; clearInterval(interval); }
     document.getElementById('result-score').textContent = count + '%';
   }, 20);
 
-  // Dimension bars
   const barsContainer = document.getElementById('dimensions-bars');
   barsContainer.innerHTML = '';
-  const dimKeys = ['lucidite', 'regulation', 'performance', 'autonomie'];
   const dimInfo = {
     lucidite: { label: 'Lucidité', color: '#4A90D9' },
     regulation: { label: 'Régulation', color: '#C9A84C' },
@@ -1241,7 +1138,7 @@ function showResults() {
     autonomie: { label: 'Autonomie', color: '#C084FC' },
   };
 
-  dimKeys.forEach(key => {
+  ['lucidite','regulation','performance','autonomie'].forEach(key => {
     const pct = dimScores[key];
     const info = dimInfo[key];
     const row = document.createElement('div');
@@ -1258,24 +1155,21 @@ function showResults() {
   });
 
   setTimeout(() => {
-    dimKeys.forEach(key => {
+    ['lucidite','regulation','performance','autonomie'].forEach(key => {
       document.getElementById('bar-' + key).style.width = dimScores[key] + '%';
     });
   }, 300);
 
-  // Insights
   document.getElementById('insight-strength').textContent = profile.strength;
   document.getElementById('insight-weakness').textContent = profile.weakness;
   document.getElementById('insight-tool').textContent = profile.tool;
 
-  // Log (in real deployment, send to backend/email service)
-  console.log('Lead captured:', { name, email, globalScore, dimScores, profile: profile.name });
+  console.log('Lead:', { name, email, globalScore, dimScores, profile: profile.name });
 }
 
 function goToTeasing() {
-  // Pass current score to teasing screen
   const scoreEl = document.getElementById('result-score');
-  const score = scoreEl ? scoreEl.textContent : '—';
+  const score = scoreEl ? scoreEl.textContent : '--';
   const teasingScore = document.getElementById('teasing-score-display');
   if (teasingScore) teasingScore.textContent = score;
   showScreen('screen-teasing');
