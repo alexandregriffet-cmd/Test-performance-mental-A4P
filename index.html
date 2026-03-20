@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test Mental A4P — Académie de Performances</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B3A6B;
+    --navy-dark: #0f2244;
+    --navy-light: #2E5BA8;
+    --accent: #4A90D9;
+    --gold: #C9A84C;
+    --white: #FFFFFF;
+    --off-white: #F8F9FC;
+    --gray: #6B7280;
+    --light-gray: #E8EDF5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy-dark);
+    min-height: 100vh;
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(74,144,217,0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #0f2244 0%, #1B3A6B 50%, #0f2244 100%);
+    z-index: -1;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .header {
+    text-align: center;
+    padding: 30px 0 20px;
+  }
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .brand span { color: var(--gold); }
+
+  .screen { display: none; animation: fadeIn 0.5s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .intro-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+  }
+
+  .intro-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .intro-title em { color: var(--gold); font-style: normal; }
+
+  .intro-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .intro-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .tag {
+    background: rgba(74,144,217,0.2);
+    border: 1px solid rgba(74,144,217,0.4);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+  }
+
+  .intro-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 14px 8px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--navy-light), var(--accent));
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(74,144,217,0.4);
+  }
+
+  .btn-secondary {
+    width: 100%;
+    padding: 14px 24px;
+    background: transparent;
+    color: rgba(255,255,255,0.7);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+  }
+
+  .progress-wrap { margin-bottom: 24px; }
+
+  .progress-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .progress-count {
+    font-size: 12px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy-light), var(--gold));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+  }
+
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .question-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 32px 28px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+  }
+
+  .question-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.4;
+    margin-bottom: 24px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-align: left;
+  }
+
+  .option:hover {
+    background: rgba(74,144,217,0.15);
+    border-color: rgba(74,144,217,0.4);
+    transform: translateX(4px);
+  }
+
+  .option.selected {
+    background: rgba(74,144,217,0.25);
+    border-color: var(--accent);
+  }
+
+  .option-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+  }
+
+  .option.selected .option-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .option.selected .option-dot::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+  }
+
+  .option-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+  }
+
+  .option.selected .option-text {
+    color: white;
+    font-weight: 500;
+  }
+
+  .email-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 40px 36px;
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .email-icon { font-size: 48px; margin-bottom: 16px; }
+
+  .email-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .email-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .email-input, .name-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+
+  .name-input { margin-bottom: 16px; }
+
+  .email-input::placeholder,
+  .name-input::placeholder { color: rgba(255,255,255,0.35); }
+
+  .email-input:focus,
+  .name-input:focus {
+    border-color: var(--accent);
+    background: rgba(74,144,217,0.1);
+  }
+
+  .email-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  .results-header {
+    text-align: center;
+    padding: 30px 0 20px;
+  }
+
+  .results-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .results-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .results-score {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin: 12px 0 4px;
+  }
+
+  .results-score-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+  }
+
+  .profile-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--navy-light), var(--accent));
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 30px;
+    margin: 16px 0;
+    letter-spacing: 0.05em;
+  }
+
+  .dimensions-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+
+  .dimensions-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .dimension-row { margin-bottom: 16px; }
+
+  .dimension-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .dimension-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .dimension-pct {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  .dimension-bar {
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .dimension-fill {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 1s ease 0.3s;
+  }
+
+  .insight-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 16px;
+  }
+
+  .insight-section { margin-bottom: 20px; }
+
+  .insight-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .insight-label.strength { color: #4ADE80; }
+  .insight-label.weakness { color: #F87171; }
+  .insight-label.tool { color: var(--gold); }
+
+  .insight-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+  }
+
+  .cta-card {
+    background: linear-gradient(135deg, rgba(27,58,107,0.8), rgba(46,91,168,0.6));
+    border: 1px solid rgba(74,144,217,0.4);
+    border-radius: 20px;
+    padding: 32px 28px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .cta-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .btn-gold {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--gold), #E8C56A);
+    color: var(--navy-dark);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.03em;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.4);
+  }
+
+  .share-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .footer-brand {
+    text-align: center;
+    padding: 20px 0 30px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+
+  .error-msg {
+    color: #F87171;
+    font-size: 12px;
+    margin-top: 6px;
+    display: none;
+  }
+
+  @media (max-width: 480px) {
+    .intro-card, .question-card, .email-card { padding: 24px 20px; }
+    .intro-title { font-size: 28px; }
+    .question-text { font-size: 19px; }
+    .intro-stats { grid-template-columns: repeat(3,1fr); gap: 8px; }
+  }
+
+  .teasing-card {
+    background: linear-gradient(135deg, rgba(15,34,68,0.95), rgba(27,58,107,0.9));
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 20px;
+    padding: 36px 28px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .teasing-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .teasing-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .teasing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .teasing-title em { color: var(--gold); font-style: normal; }
+
+  .teasing-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .teasing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .teasing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .feature-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+  .feature-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 2px;
+  }
+
+  .feature-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+  }
+
+  .teasing-vs {
+    text-align: center;
+    margin: 16px 0;
+    position: relative;
+  }
+
+  .teasing-vs::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  .teasing-vs span {
+    position: relative;
+    background: var(--navy-dark);
+    padding: 0 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.1em;
+  }
+
+  .teasing-score-box {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .teasing-score-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .teasing-score-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .teasing-score-context {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <img src="https://alexandregriffet-cmd.github.io/Test-performance-mental-A4P/IMG_1572.jpeg"
+         alt="Académie de Performances A4P"
+         style="width:120px;height:120px;border-radius:16px;margin-bottom:12px;display:block;margin-left:auto;margin-right:auto;box-shadow:0 8px 32px rgba(0,0,0,0.4);"
+         onerror="this.style.display='none'" />
+    <div class="logo-text" style="margin-top:4px;">Académie de Performances</div>
+    <div class="brand">A4P · <span>Alexandre Griffet</span></div>
+  </div>
+
+  <!-- ÉCRAN 1 — INTRO -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-card">
+      <div class="intro-title">Quel est ton <em>score mental</em> de performer ?</div>
+      <p class="intro-desc">
+        12 questions. 3 minutes. Un diagnostic personnalisé de ta solidité mentale sous pression — basé sur la méthode A4P.
+      </p>
+      <div class="intro-tags">
+        <span class="tag">Sportifs</span>
+        <span class="tag">Managers</span>
+        <span class="tag">Performers</span>
+        <span class="tag">12-25 ans</span>
+      </div>
+      <div class="intro-stats">
+        <div class="stat">
+          <span class="stat-num">12</span>
+          <span class="stat-label">Questions</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3'</span>
+          <span class="stat-label">Durée</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Dimensions</span>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="startQuiz()">Démarrer mon diagnostic →</button>
+    </div>
+    <div class="footer-brand">ACADÉMIE DE PERFORMANCES · A4P · alexandregriffet</div>
+  </div>
+
+  <!-- ÉCRAN 2 — QUESTIONS -->
+  <div class="screen" id="screen-quiz">
+    <div class="progress-wrap">
+      <div class="progress-top">
+        <span class="progress-label">PROGRESSION</span>
+        <span class="progress-count" id="progress-count">1 / 12</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill" style="width:8%"></div>
+      </div>
+    </div>
+
+    <div class="question-card">
+      <div class="category-badge" id="category-badge">Lucidité</div>
+      <div class="question-text" id="question-text">Question...</div>
+      <div class="options" id="options-container"></div>
+    </div>
+
+    <button class="btn-secondary" id="btn-next" onclick="nextQuestion()" style="display:none">
+      Question suivante →
+    </button>
+  </div>
+
+  <!-- ÉCRAN 3 — EMAIL -->
+  <div class="screen" id="screen-email">
+    <div class="email-card">
+      <div class="email-icon">🧠</div>
+      <div class="email-title">Ton diagnostic est prêt !</div>
+      <p class="email-desc">
+        Entre tes coordonnées pour recevoir ton profil mental complet et les outils personnalisés de la méthode A4P.
+      </p>
+      <input type="text" class="name-input" id="user-name" placeholder="Ton prénom" />
+      <input type="email" class="email-input" id="user-email" placeholder="Ton adresse email" />
+      <div class="error-msg" id="error-msg">Merci d'entrer un email valide.</div>
+      <button class="btn-primary" onclick="showResults()" style="margin-top:16px">
+        Voir mes résultats →
+      </button>
+      <p class="email-note">Tes données sont confidentielles. Pas de spam — juste de la valeur.</p>
+    </div>
+  </div>
+
+  <!-- ÉCRAN 4 — RÉSULTATS -->
+  <div class="screen" id="screen-results">
+    <div class="results-header">
+      <div class="results-title">Ton profil mental A4P</div>
+      <div class="results-name" id="result-name">Performer</div>
+      <div class="results-score" id="result-score">0%</div>
+      <div class="results-score-label">SCORE GLOBAL DE PERFORMANCE MENTALE</div>
+      <div class="profile-badge" id="profile-badge">Profil</div>
+    </div>
+
+    <div class="dimensions-card">
+      <div class="dimensions-title">Tes 4 dimensions</div>
+      <div id="dimensions-bars"></div>
+    </div>
+
+    <div class="insight-card" id="insight-card">
+      <div class="insight-section">
+        <div class="insight-label strength">✦ Ta force principale</div>
+        <div class="insight-text" id="insight-strength">—</div>
+      </div>
+      <div class="insight-section">
+        <div class="insight-label weakness">⚡ Ton principal frein</div>
+        <div class="insight-text" id="insight-weakness">—</div>
+      </div>
+      <div class="insight-section" style="margin-bottom:0">
+        <div class="insight-label tool">→ L'outil A4P pour toi</div>
+        <div class="insight-text" id="insight-tool">—</div>
+      </div>
+    </div>
+
+    <div class="cta-card">
+      <div class="cta-title">Va plus loin avec ton profil</div>
+      <p class="cta-desc">
+        Un échange découverte gratuit de 30 minutes avec Alexandre Griffet pour analyser ton profil et définir les étapes concrètes vers ta meilleure performance.
+      </p>
+      <button class="btn-gold" onclick="window.open('https://linktr.ee/alexandregriffet','_blank')">
+        Réserver mon échange gratuit →
+      </button>
+      <div style="margin-top:10px;">
+        <button class="btn-secondary" onclick="goToTeasing()" style="border-color:rgba(201,168,76,0.4);color:#C9A84C;">
+          🔬 Voir le Diagnostic Complet A4P →
+        </button>
+      </div>
+    </div>
+
+    <p class="share-note">Partage ce test à un sportif ou manager que tu connais 👇</p>
+    <button class="btn-secondary" onclick="shareTest()">Partager le test</button>
+
+    <div class="footer-brand" style="margin-top:20px">
+      ACADÉMIE DE PERFORMANCES · A4P<br>
+      alexandregriffet · Clermont-Ferrand & Hauts-de-Seine
+    </div>
+  </div>
+
+  <!-- ÉCRAN 5 — TEASING DIAGNOSTIC COMPLET -->
+  <div class="screen" id="screen-teasing">
+    <div class="results-header">
+      <div class="results-title">Tu veux aller plus loin ?</div>
+      <div class="results-name" style="font-size:24px;">Le Diagnostic Complet A4P</div>
+    </div>
+
+    <div class="teasing-card">
+      <div class="teasing-eyebrow">🔬 Diagnostic Expert · Méthode A4P</div>
+      <div class="teasing-title">Cartographie complète de ton <em>architecture mentale</em></div>
+      <p class="teasing-desc">
+        Ce test express t'a donné une première orientation. Le Diagnostic Complet A4P va 3 niveaux plus loin — avec une précision clinique sur chaque dimension de ta performance mentale.
+      </p>
+
+      <div class="teasing-score-box">
+        <div class="teasing-score-label">Ce test — 12 questions</div>
+        <div class="teasing-score-value" id="teasing-score-display">—%</div>
+        <div class="teasing-score-context">Score express · Vue d'ensemble</div>
+      </div>
+
+      <div class="teasing-vs">
+        <span>VS LE DIAGNOSTIC COMPLET</span>
+      </div>
+
+      <div class="teasing-features">
+        <div class="teasing-feature">
+          <div class="feature-icon">📊</div>
+          <div class="feature-content">
+            <div class="feature-title">200 questions · 3 inventaires</div>
+            <div class="feature-desc">PMP · IPP · FMP — les 3 outils propriétaires A4P pour une cartographie complète</div>
+          </div>
+        </div>
+        <div class="teasing-feature">
+          <div class="feature-icon">🗺️</div>
+          <div class="feature-content">
+            <div class="feature-title">Cartographie détaillée</div>
+            <div class="feature-desc">Points forts, axes d'amélioration et 3 priorités de travail personnalisées</div>
+          </div>
+        </div>
+        <div class="teasing-feature">
+          <div class="feature-icon">🎯</div>
+          <div class="feature-content">
+            <div class="feature-title">Débriefing Expert avec Alexandre</div>
+            <div class="feature-desc">1h d'analyse personnalisée de tes résultats avec le fondateur d'A4P</div>
+          </div>
+        </div>
+        <div class="teasing-feature">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-content">
+            <div class="feature-title">Plan d'action sur mesure</div>
+            <div class="feature-desc">Les 3 leviers prioritaires pour progresser selon ton profil unique</div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-gold" onclick="window.open('https://linktr.ee/alexandregriffet','_blank')">
+        Je veux mon Diagnostic Complet →
+      </button>
+      <p style="font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:10px;">
+        Sur demande · Avec débriefing expert inclus
+      </p>
+    </div>
+
+    <button class="btn-secondary" onclick="showScreen('screen-results')">
+      ← Revenir à mes résultats
+    </button>
+
+    <div class="footer-brand" style="margin-top:20px">
+      ACADÉMIE DE PERFORMANCES · A4P<br>
+      alexandregriffet · Clermont-Ferrand & Hauts-de-Seine
+    </div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  { cat: "Lucidité", catColor: "#4A90D9",
+    text: "Avant une compétition ou un moment important, je connais clairement mes points forts et mes points faibles.",
+    options: ["Jamais — je n'y pense pas vraiment","Rarement — j'y pense mais c'est flou","Parfois — selon les situations","Souvent — j'ai une bonne idée de moi-même","Toujours — je me connais précisément"],
+    scores: [0,1,2,3,4] },
+  { cat: "Lucidité", catColor: "#4A90D9",
+    text: "Quand je fais une erreur, je comprends rapidement ce qui s'est passé sans me juger trop sévèrement.",
+    options: ["Jamais — je reste bloqué sur l'erreur","Rarement — je me juge beaucoup","Parfois — ça dépend de l'enjeu","Souvent — j'analyse sans trop me blesser","Toujours — je transforme l'erreur en info"],
+    scores: [0,1,2,3,4] },
+  { cat: "Lucidité", catColor: "#4A90D9",
+    text: "Je suis capable d'identifier ce qui déclenche mon stress ou mes émotions négatives en compétition.",
+    options: ["Jamais — ça arrive sans prévenir","Rarement — c'est difficile à identifier","Parfois — quelques déclencheurs connus","Souvent — j'en connais la plupart","Toujours — je les identifie avec précision"],
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
+    text: "Lorsque la pression monte, j'arrive à retrouver mon calme et ma lucidité en quelques secondes.",
+    options: ["Jamais — je perds complètement mes moyens","Rarement — il me faut beaucoup de temps","Parfois — selon l'intensité de la situation","Souvent — j'ai des techniques qui fonctionnent","Toujours — je me régule rapidement"],
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
+    text: "Après une mauvaise action ou une erreur, je reviens dans le présent sans que ça affecte la suite.",
+    options: ["Jamais — une erreur déclenche une spirale","Rarement — je rummine longtemps","Parfois — selon l'importance de l'enjeu","Souvent — je rebondis assez vite","Toujours — je coupe et je recommence"],
+    scores: [0,1,2,3,4] },
+  { cat: "Régulation", catColor: "#C9A84C",
+    text: "J'utilise des routines mentales (respiration, mot, geste) pour me préparer avant un moment clé.",
+    options: ["Jamais — je n'ai pas de routine","Rarement — j'essaie parfois sans régularité","Parfois — selon les circonstances","Souvent — j'ai quelques rituels efficaces","Toujours — j'ai un rituel précis et répété"],
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
+    text: "Mon niveau de performance en compétition est proche de ce que je produis à l'entraînement.",
+    options: ["Jamais — je suis beaucoup moins bon en match","Rarement — il y a souvent un écart important","Parfois — ça dépend des jours","Souvent — mes niveaux sont assez proches","Toujours — je performe de façon constante"],
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
+    text: "Dans les moments décisifs (fin de match, deadline, examen), je suis capable de maintenir ma concentration.",
+    options: ["Jamais — je relâche systématiquement","Rarement — la pression me fait décrocher","Parfois — ça dépend de mon état","Souvent — je reste focalisé la plupart du temps","Toujours — les enjeux me boostent"],
+    scores: [0,1,2,3,4] },
+  { cat: "Performance", catColor: "#4ADE80",
+    text: "Je suis capable de transformer la pression d'un moment important en énergie positive.",
+    options: ["Jamais — la pression me paralyse","Rarement — elle me perturbe plus qu'elle ne m'aide","Parfois — selon l'enjeu","Souvent — j'arrive à la canaliser","Toujours — la pression m'élève"],
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
+    text: "Je suis capable de m'auto-évaluer honnêtement après une performance sans attendre le retour de mon coach.",
+    options: ["Jamais — j'ai besoin d'un retour extérieur","Rarement — j'ai du mal à être objectif","Parfois — sur certains aspects","Souvent — j'ai un regard assez lucide","Toujours — je débriefe seul avec précision"],
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
+    text: "J'adapte mes outils mentaux selon les situations sans avoir besoin qu'on me le dise.",
+    options: ["Jamais — je ne sais pas quoi utiliser","Rarement — j'applique ce qu'on m'a dit sans adapter","Parfois — selon les situations familières","Souvent — j'ajuste selon le contexte","Toujours — je suis autonome dans mes choix"],
+    scores: [0,1,2,3,4] },
+  { cat: "Autonomie", catColor: "#C084FC",
+    text: "Mon engagement et ma motivation viennent principalement de l'intérieur, pas des encouragements extérieurs.",
+    options: ["Jamais — j'ai besoin d'être poussé","Rarement — la validation externe est importante pour moi","Parfois — selon les périodes","Souvent — je suis moteur la plupart du temps","Toujours — je suis intrinsèquement motivé"],
+    scores: [0,1,2,3,4] }
+];
+
+const PROFILES = [
+  { min: 0, max: 30, name: "Le Débutant Mental",
+    strength: "Tu as une grande marge de progression — c'est une opportunité. Beaucoup de ressources sont encore inexploitées.",
+    weakness: "La pression te déstabilise facilement et tu as du mal à rebondir après une erreur. La connaissance de toi-même est encore limitée.",
+    tool: "Commence par la phase Lucidité de la méthode A4P : identifier tes 3 principaux déclencheurs de stress et construire ton tableau Objectif-But-Finalité." },
+  { min: 31, max: 55, name: "Le Performer en Construction",
+    strength: "Tu as des bases solides et une conscience de toi-même qui commence à s'affirmer. Tu sais ce qui fonctionne.",
+    weakness: "La régularité est ton enjeu principal — tu performes par intermittence selon ton état intérieur du moment.",
+    tool: "Travaille la phase Régulation : installe un rituel minute (1 mot + 1 geste + 1 respiration) et pratique-le avant chaque compétition pendant 21 jours." },
+  { min: 56, max: 75, name: "Le Performer Confirmé",
+    strength: "Tu as une réelle solidité mentale. Tu te connais bien et tu as des outils qui fonctionnent sous pression.",
+    weakness: "L'autonomie est ton prochain niveau — tu dépends encore parfois du contexte ou du soutien extérieur pour performer à ton meilleur niveau.",
+    tool: "Entre dans la phase Autonomie : construis ton protocole de débrief personnel (3 positifs + 1 amélioration) et applique-le systématiquement après chaque performance." },
+  { min: 76, max: 100, name: "L'Architecte Mental",
+    strength: "Tu as développé une maturité mentale remarquable. Tu te régules, tu t'auto-évalues et tu performes avec constance.",
+    weakness: "Ton enjeu est la transmission et le leadership mental — aider les autres à atteindre ton niveau de solidité.",
+    tool: "Explore la méthode A4P complète (PMP + IPP + FMP) pour affiner encore ta connaissance de toi et maximiser l'expression de ton plein potentiel." }
+];
+
+let currentQ = 0;
+let answers = [];
+let scores = { lucidite: 0, regulation: 0, performance: 0, autonomie: 0 };
+let selectedOption = null;
+
+function startQuiz() { showScreen('screen-quiz'); renderQuestion(); }
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+  const total = QUESTIONS.length;
+  document.getElementById('progress-count').textContent = `${currentQ + 1} / ${total}`;
+  document.getElementById('progress-fill').style.width = `${((currentQ + 1) / total) * 100}%`;
+
+  const badge = document.getElementById('category-badge');
+  badge.textContent = q.cat;
+  badge.style.color = q.catColor;
+  badge.style.borderColor = q.catColor + '60';
+  badge.style.background = q.catColor + '22';
+
+  document.getElementById('question-text').textContent = q.text;
+
+  const container = document.getElementById('options-container');
+  container.innerHTML = '';
+  selectedOption = null;
+  document.getElementById('btn-next').style.display = 'none';
+
+  q.options.forEach((opt, i) => {
+    const el = document.createElement('div');
+    el.className = 'option';
+    el.innerHTML = `<div class="option-dot"></div><div class="option-text">${opt}</div>`;
+    el.onclick = () => selectOption(i, el);
+    container.appendChild(el);
+  });
+}
+
+function selectOption(idx, el) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedOption = idx;
+  document.getElementById('btn-next').style.display = 'block';
+  if (currentQ === QUESTIONS.length - 1) {
+    document.getElementById('btn-next').textContent = 'Voir mes résultats →';
+  }
+}
+
+function nextQuestion() {
+  if (selectedOption === null) return;
+  const q = QUESTIONS[currentQ];
+  const score = q.scores[selectedOption];
+  answers.push(score);
+  const catMap = { 'Lucidité': 'lucidite', 'Régulation': 'regulation', 'Performance': 'performance', 'Autonomie': 'autonomie' };
+  scores[catMap[q.cat]] += score;
+  currentQ++;
+  if (currentQ >= QUESTIONS.length) {
+    showScreen('screen-email');
+  } else {
+    document.getElementById('btn-next').style.display = 'none';
+    document.getElementById('btn-next').textContent = 'Question suivante →';
+    renderQuestion();
+  }
+}
+
+function showResults() {
+  const name = document.getElementById('user-name').value.trim();
+  const email = document.getElementById('user-email').value.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    document.getElementById('error-msg').style.display = 'block';
+    return;
+  }
+  document.getElementById('error-msg').style.display = 'none';
+
+  const maxPerDim = 12;
+  const dimScores = {
+    lucidite: Math.round((scores.lucidite / maxPerDim) * 100),
+    regulation: Math.round((scores.regulation / maxPerDim) * 100),
+    performance: Math.round((scores.performance / maxPerDim) * 100),
+    autonomie: Math.round((scores.autonomie / maxPerDim) * 100),
+  };
+  const globalScore = Math.round((dimScores.lucidite + dimScores.regulation + dimScores.performance + dimScores.autonomie) / 4);
+  const profile = PROFILES.find(p => globalScore >= p.min && globalScore <= p.max) || PROFILES[0];
+
+  showScreen('screen-results');
+
+  const displayName = name ? name : 'Performer';
+  document.getElementById('result-name').textContent = displayName;
+  document.getElementById('profile-badge').textContent = profile.name;
+
+  let count = 0;
+  const interval = setInterval(() => {
+    count += 2;
+    if (count >= globalScore) { count = globalScore; clearInterval(interval); }
+    document.getElementById('result-score').textContent = count + '%';
+  }, 20);
+
+  const barsContainer = document.getElementById('dimensions-bars');
+  barsContainer.innerHTML = '';
+  const dimInfo = {
+    lucidite: { label: 'Lucidité', color: '#4A90D9' },
+    regulation: { label: 'Régulation', color: '#C9A84C' },
+    performance: { label: 'Performance', color: '#4ADE80' },
+    autonomie: { label: 'Autonomie', color: '#C084FC' },
+  };
+
+  ['lucidite','regulation','performance','autonomie'].forEach(key => {
+    const pct = dimScores[key];
+    const info = dimInfo[key];
+    const row = document.createElement('div');
+    row.className = 'dimension-row';
+    row.innerHTML = `
+      <div class="dimension-top">
+        <span class="dimension-name">${info.label}</span>
+        <span class="dimension-pct">${pct}%</span>
+      </div>
+      <div class="dimension-bar">
+        <div class="dimension-fill" id="bar-${key}" style="width:0%; background: linear-gradient(90deg, ${info.color}88, ${info.color})"></div>
+      </div>`;
+    barsContainer.appendChild(row);
+  });
+
+  setTimeout(() => {
+    ['lucidite','regulation','performance','autonomie'].forEach(key => {
+      document.getElementById('bar-' + key).style.width = dimScores[key] + '%';
+    });
+  }, 300);
+
+  document.getElementById('insight-strength').textContent = profile.strength;
+  document.getElementById('insight-weakness').textContent = profile.weakness;
+  document.getElementById('insight-tool').textContent = profile.tool;
+
+  console.log('Lead:', { name, email, globalScore, dimScores, profile: profile.name });
+}
+
+function goToTeasing() {
+  const scoreEl = document.getElementById('result-score');
+  const score = scoreEl ? scoreEl.textContent : '--';
+  const teasingScore = document.getElementById('teasing-score-display');
+  if (teasingScore) teasingScore.textContent = score;
+  showScreen('screen-teasing');
+}
+
+function shareTest() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Test Mental A4P — Académie de Performances',
+      text: 'Découvre ton score mental de performer en 3 minutes — méthode A4P par Alexandre Griffet',
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('Lien copié ! Partage-le à tes contacts.');
+    });
+  }
+}
+</script>
+</body>
+</html>
